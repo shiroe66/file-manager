@@ -8,11 +8,9 @@ export const currentPath = (action = "", path) => {
 
   if (action === "up" && array.length > 1) {
     array.pop()
-    return array.join("\u005C")
   }
 
   if (action === "cd") {
     array.push(path)
-    return array.join("\u005C")
   }
 }
