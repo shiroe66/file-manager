@@ -8,8 +8,11 @@ import { add } from "./src/add.js"
 import { rn } from "./src/rn.js"
 import { cp } from "./src/cp.js"
 import { rm } from "./src/rm.js"
+import { hash } from "./src/hash.js"
 import { currentPath } from "./src/helpers/currentPath.js"
 import { table } from "console"
+import { compress } from "./src/compress.js"
+import { decompress } from "./src/decompress.js"
 
 const rl = readline.createInterface({ input, output })
 
@@ -53,10 +56,13 @@ rl.on("line", (input) => {
     case "os":
       break
     case "hash":
+      hash(input)
       break
     case "compress":
+      compress(input)
       break
     case "decompress":
+      decompress(input)
       break
     case ".exit":
       rl.close()
