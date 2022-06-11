@@ -9,6 +9,6 @@ export const hash = async (input) => {
   const rs = createReadStream(file)
   const hash = createHash("sha256").setEncoding("hex")
 
-  hash.on("data", (hash) => console.log(hash))
   rs.pipe(hash)
+  hash.on("data", (chunk) => console.log(chunk))
 }
