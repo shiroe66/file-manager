@@ -13,6 +13,8 @@ import { currentPath } from "./src/helpers/currentPath.js"
 import { table } from "console"
 import { compress } from "./src/compress.js"
 import { decompress } from "./src/decompress.js"
+import { mv } from "./src/mv.js"
+import { os } from "./src/os.js"
 
 const rl = readline.createInterface({ input, output })
 
@@ -49,11 +51,13 @@ rl.on("line", (input) => {
       cp(input)
       break
     case "mv":
+      mv(input)
       break
     case "rm":
       rm(input)
       break
     case "os":
+      os(input)
       break
     case "hash":
       hash(input)
