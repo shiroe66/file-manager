@@ -1,11 +1,14 @@
 import { currentPath } from "./helpers/currentPath.js"
-import { founder } from "./helpers/founder.js"
+import { readdir } from "fs/promises"
 
 export const cd = async (input) => {
-  const folder = (await founder(input)).folder
-  const founded = (await founder(input)).founded
+  const folder = input.slice(3)
+  const folders = await (await readdir(currentPath(), { withFileTypes: true }))
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+  const find = folders.find((dirent) => dirent === folder)
 
-  if (founded) {
+  if (find) {
     currentPath("cd", folder)
   } else {
     console.error("Operation failed")
