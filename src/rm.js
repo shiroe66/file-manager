@@ -1,9 +1,9 @@
-import fs from "fs/promises"
-import path from "path"
+import { unlink } from "fs/promises"
+import { join } from "path"
 import { currentPath } from "./helpers/currentPath.js"
 
 export const rm = async (input) => {
-  const file = path.join(currentPath(), input.slice(3).trim())
+  const file = join(currentPath(), input.slice(3).trim())
 
-  fs.unlink(file).catch((err) => console.error("Operation failed"))
+  unlink(file).catch((err) => console.error("Operation failed"))
 }

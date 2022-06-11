@@ -1,12 +1,12 @@
 import { createReadStream, createWriteStream } from "fs"
-import path from "path"
+import { join } from "path"
 import { currentPath } from "./helpers/currentPath.js"
 
 export const cp = async (input) => {
-  const inputArr = input.slice(3).split(" ")
+  const [oldFile, newFile] = input.slice(3).split(" ")
 
-  const oldPath = path.join(currentPath(), inputArr[0])
-  const newPath = path.join(currentPath(), inputArr[1])
+  const oldPath = join(currentPath(), oldFile)
+  const newPath = join(currentPath(), newFile)
 
   const rs = createReadStream(oldPath)
   const ws = createWriteStream(newPath)

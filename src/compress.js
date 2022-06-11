@@ -4,11 +4,11 @@ import { join } from "path"
 import { currentPath } from "./helpers/currentPath.js"
 
 export const compress = async (input) => {
-  const file = input.split(" ")[1]
+  const [, file] = input.split(" ")
   const source = join(currentPath(), file)
 
-  const newFile = `${file.split(".")[0]}.br`
-  const dest = join(currentPath(), newFile)
+  const [newFile] = file.split(".")
+  const dest = join(currentPath(), `${newFile}.br`)
 
   const rs = createReadStream(source)
   const ws = createWriteStream(dest)

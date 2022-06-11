@@ -1,14 +1,14 @@
-import fs from "fs/promises"
-import path from "path"
+import { rename } from "fs/promises"
+import { join } from "path"
 import { currentPath } from "./helpers/currentPath.js"
 
 export const rn = async (input) => {
-  const inputArr = input.slice(3).split(" ")
+  const [oldTitle, newTitle] = input.slice(3).split(" ")
 
-  const oldTitle = path.join(currentPath(), inputArr[0])
-  const newTitle = path.join(currentPath(), inputArr[1])
+  const oldFile = join(currentPath(), oldTitle)
+  const newFile = join(currentPath(), newTitle)
 
-  fs.rename(oldTitle, newTitle).catch((err) =>
+  rename(oldFile, newFile).catch((err) =>
     console.error("Operation failed", err)
   )
 }

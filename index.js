@@ -26,7 +26,7 @@ output.write(`You are currently in ${currentPath()}\n`)
 output.write("Please, print command and wait for results!\n")
 
 rl.on("line", (input) => {
-  const command = input.split(" ")[0]
+  const [command] = input.split(" ")
 
   switch (command) {
     case "up":
