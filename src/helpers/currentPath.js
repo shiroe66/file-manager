@@ -1,5 +1,6 @@
-const dir = process.env.HOME || process.env.USERPROFILE
-const array = dir.split("\u005C")
+import { homedir } from "os"
+
+const array = homedir().split("\u005C")
 
 export const currentPath = (action = "", path) => {
   if (action.trim() === "") {
