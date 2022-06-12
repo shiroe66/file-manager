@@ -1,20 +1,19 @@
-import readline from "readline"
 import process, { stdin as input, stdout as output } from "process"
-import { up } from "./src/up.js"
-import { ls } from "./src/ls.js"
-import { cd } from "./src/cd.js"
-import { cat } from "./src/cat.js"
+import readline from "readline"
 import { add } from "./src/add.js"
-import { rn } from "./src/rn.js"
+import { cat } from "./src/cat.js"
+import { cd } from "./src/cd.js"
+import { compress } from "./src/compress.js"
 import { cp } from "./src/cp.js"
-import { rm } from "./src/rm.js"
+import { decompress } from "./src/decompress.js"
 import { hash } from "./src/hash.js"
 import { currentPath } from "./src/helpers/currentPath.js"
-import { table } from "console"
-import { compress } from "./src/compress.js"
-import { decompress } from "./src/decompress.js"
+import { ls } from "./src/ls.js"
 import { mv } from "./src/mv.js"
 import { os } from "./src/os.js"
+import { rm } from "./src/rm.js"
+import { rn } from "./src/rn.js"
+import { up } from "./src/up.js"
 
 const rl = readline.createInterface({ input, output })
 
@@ -36,7 +35,7 @@ rl.on("line", (input) => {
       cd(input)
       break
     case "ls":
-      ls().then((list) => table(list))
+      ls()
       break
     case "cat":
       cat(input)
