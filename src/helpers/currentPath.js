@@ -1,17 +1,18 @@
 import { homedir } from "os"
 
-const array = homedir().split("\u005C")
+process.cwd()
+process.chdir(homedir())
 
 export const currentPath = (action = "", path) => {
   if (action.trim() === "") {
-    return `${array.join("\u005C")}\u005C`
+    return process.cwd()
   }
 
-  if (action === "up" && array.length > 1) {
-    array.pop()
+  if (action === "up") {
+    process.chdir("../")
   }
 
   if (action === "cd") {
-    array.push(path)
+    process.chdir(`./${path}`)
   }
 }
