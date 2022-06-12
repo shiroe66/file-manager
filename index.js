@@ -21,7 +21,7 @@ const args = process.argv.slice(3)
 const userName = args.toString().slice(11)
 
 output.write(`Welcome to the File Manager, ${userName}!\n`)
-output.write(`You are currently in ${currentPath()}\n`)
+output.write(`You are currently in ${process.cwd()}\n`)
 output.write("Please, print command and wait for results!\n")
 
 rl.on("line", (input) => {
@@ -75,7 +75,7 @@ rl.on("line", (input) => {
   }
 
   if (input !== ".exit") {
-    output.write(`You are currently in ${currentPath()}\n`)
+    output.write(`You are currently in ${process.cwd()}\n`)
   }
 })
 
