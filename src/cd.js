@@ -7,9 +7,6 @@ export const cd = async (input) => {
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name)
   const find = folders.find((dirent) => dirent === folder)
-  console.log(process.cwd())
-  console.log(process.chdir("../"))
-  console.log(process.cwd())
   if (find) {
     currentPath("cd", folder)
   } else {
