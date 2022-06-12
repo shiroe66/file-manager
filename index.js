@@ -1,3 +1,4 @@
+import { homedir } from "os"
 import process, { stdin as input, stdout as output } from "process"
 import readline from "readline"
 import { add } from "./src/add.js"
@@ -15,6 +16,7 @@ import { rn } from "./src/rn.js"
 import { up } from "./src/up.js"
 
 const rl = readline.createInterface({ input, output })
+process.chdir(homedir())
 
 const args = process.argv.slice(3)
 const userName = args.toString().slice(11)
