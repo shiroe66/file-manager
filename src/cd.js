@@ -1,11 +1,15 @@
-import { stat } from "fs/promises"
+import path, { join } from 'path'
 
 export const cd = (input) => {
-  const folder = input.slice(3)
+  const inputPath = input.slice(3).trim()
 
-  stat(`${process.cwd()}\\${folder}`, (_, stats) => {
-    if (stats.isDirectory()) {
-      process.chdir(`./${folder}`)
+  try {
+    if (path.isAbsolute(inputPath)) {
+      process.chdir(resolve(process.cwd(), inputPath))
+    } else {
+      process.chdir(join(process.cwd(), inputPath))
     }
-  })
+  } catch (err) {
+    console.log('Operation failed');
+  }
 }
