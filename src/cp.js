@@ -10,5 +10,6 @@ export const cp = async (input) => {
   const rs = createReadStream(oldPath)
   const ws = createWriteStream(newPath)
 
+  rs.on("error", () => console.log("Operation failed"))
   rs.pipe(ws)
 }
