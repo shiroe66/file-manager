@@ -1,14 +1,13 @@
 import { createReadStream, createWriteStream } from "fs"
 import { createBrotliCompress } from "zlib"
 import { join } from "path"
-import { currentPath } from "./helpers/currentPath.js"
 
 export const compress = async (input) => {
   const [, file] = input.split(" ")
-  const source = join(currentPath(), file)
+  const source = join(process.cwd(), file)
 
   const [newFile] = file.split(".")
-  const dest = join(currentPath(), `${newFile}.br`)
+  const dest = join(process.cwd(), `${newFile}.br`)
 
   const rs = createReadStream(source)
   const ws = createWriteStream(dest)

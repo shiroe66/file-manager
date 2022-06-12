@@ -1,3 +1,1 @@
-import { currentPath } from "./helpers/currentPath.js"
-
-export const up = async () => currentPath("up")
+export const up = async () => process.chdir("../")
