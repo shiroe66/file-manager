@@ -3,18 +3,15 @@ import { createBrotliDecompress } from "zlib"
 import { join } from "path"
 
 export const decompress = async (input) => {
-  const [, file] = input.split(" ")
+  const [, file, path] = input.split(" ")
   const source = join(process.cwd(), file)
-
-  const [newFile] = file.split(".")
-  const dest = join(process.cwd(), `${newFile}.txt`)
+  const dest = join(path)
 
   const rs = createReadStream(source)
   const ws = createWriteStream(dest)
-  const brotli = createBrotliDecompress()
+  rs.on("error", () => console.log("Operation failed"))
+  ws.on("error", () => console.log("Operation failed"))
 
-  const stream = rs.pipe(brotli).pipe(ws)
-  stream.on("finish", () =>
-    console.log(`Decompressing done! Your filename ${newFile}`)
-  )
+  const brotli = createBrotliDecompress()
+  rs.pipe(brotli).pipe(ws)
 }
