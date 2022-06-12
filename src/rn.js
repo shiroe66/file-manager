@@ -7,7 +7,5 @@ export const rn = async (input) => {
   const oldFile = join(process.cwd(), oldTitle)
   const newFile = join(process.cwd(), newTitle)
 
-  rename(oldFile, newFile).catch((err) =>
-    console.error("Operation failed", err)
-  )
+  rename(oldFile, newFile).catch((err) => console.error("Operation failed"))
 }
